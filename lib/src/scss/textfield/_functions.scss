@@ -20,9 +20,8 @@
 // THE SOFTWARE.
 //
 
-@import "package:mdc_web/src/scss/animation/variables";
+@use "package:mdc_web/src/scss/animation/variables";
 
-@function mdc-text-field-transition($property, $duration: 150ms) {
-  @return #{$property} #{$duration} $mdc-animation-standard-curve-timing-function;
+@function transition($property, $duration: 150ms) {
+  @return #{$property} #{$duration} variables.$standard-curve-timing-function;
 }
-

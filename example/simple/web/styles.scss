@@ -1,12 +1,12 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+@use url(https://fonts.googleapis.com/css?family=Roboto);
+@use url(https://fonts.googleapis.com/css?family=Material+Icons);
 
 $mdc-theme-primary: #fcb8ab;
 $mdc-theme-secondary: rgb(66, 189, 189);
 $mdc-theme-on-primary: #442b2d;
 $mdc-theme-on-secondary: #212121;
 
-@import "package:mdc_web/material-components-web";
+@use "package:mdc_web/material-components-web";
 
 .mdc-button.primary {
   @include mdc-elevation(2.0);

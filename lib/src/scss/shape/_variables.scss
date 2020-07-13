@@ -21,14 +21,22 @@
 //
 
 // Shape categories
-$mdc-shape-small-component-radius: 4px !default;
-$mdc-shape-medium-component-radius: 4px !default;
-$mdc-shape-large-component-radius: 0 !default;
+$small-component-radius: 4px !default;
+$medium-component-radius: 4px !default;
+$large-component-radius: 0 !default;
 
-// Shape category mapping.
-$mdc-shape-category-values: (
-  small: $mdc-shape-small-component-radius,
-  medium: $mdc-shape-medium-component-radius,
-  large: $mdc-shape-large-component-radius,
+// Shape keyword mapping
+$category-keywords: (
+  small: (
+    varname: --mdc-shape-small,
+    fallback: $small-component-radius,
+  ),
+  medium: (
+    varname: --mdc-shape-medium,
+    fallback: $medium-component-radius,
+  ),
+  large: (
+    varname: --mdc-shape-large,
+    fallback: $large-component-radius,
+  ),
 ) !default;
-

@@ -20,14 +20,27 @@
 // THE SOFTWARE.
 //
 
-@import "package:mdc_web/src/scss/theme/variables";
+@use "package:mdc_web/src/scss/density/variables" as density-variables;
+@use "package:mdc_web/src/scss/theme/variables" as theme-variables;
 
-$mdc-radio-touch-area: 40px !default;
-$mdc-radio-ui-size: 20px !default;
-$mdc-radio-ui-pct: percentage($mdc-radio-ui-size / $mdc-radio-touch-area) !default;
-$mdc-radio-transition-duration: 120ms !default;
-$mdc-radio-ripple-opacity: .14 !default;
-$mdc-radio-baseline-theme-color: secondary !default;
-$mdc-radio-unchecked-color: rgba(mdc-theme-prop-value(on-surface), .54) !default;
-$mdc-radio-circle-color: rgba(mdc-theme-prop-value(on-surface), .26) !default;
+$ripple-size: 40px !default;
+$icon-size: 20px !default;
+$transition-duration: 120ms !default;
+$ripple-opacity: 0.14 !default;
+$baseline-theme-color: secondary !default;
+$unchecked-color: rgba(theme-variables.prop-value(on-surface), 0.54) !default;
+$disabled-circle-color: rgba(
+  theme-variables.prop-value(on-surface),
+  0.38
+) !default;
 
+$minimum-size: 28px !default;
+$maximum-size: $ripple-size !default;
+$density-scale: density-variables.$default-scale !default;
+$density-config: (
+  size: (
+    minimum: $minimum-size,
+    default: $ripple-size,
+    maximum: $maximum-size,
+  ),
+) !default;

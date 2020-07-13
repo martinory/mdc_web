@@ -15,11 +15,11 @@ main() async {
   }
 
   var entrypoint =
-  File('node_modules/material-components-web/material-components-web.scss');
+      File('node_modules/material-components-web/material-components-web.scss');
   var entrypointContents = await entrypoint.readAsString();
   var entrypointTarget = File('lib/material-components-web.scss');
-  var f = await entrypointTarget
-      .writeAsString(dartifyImports(entrypointContents));
+  var f =
+      await entrypointTarget.writeAsString(dartifyImports(entrypointContents));
   await copyMaterialSassFiles();
   stdout.writeln('$f written');
   await Directory('node_modules').delete(recursive: true);
@@ -47,13 +47,13 @@ Future copyMaterialSassFiles() async {
   }
 }
 
-/// Changes `@import "@material/elevation/mixins";` to `@import
+/// Changes `@use "package:mdc_web/src/scss/elevation/mixins";` to `@import
 /// "package:mdc_web_sass/src/elevation/mixins";`
 String dartifyImports(String contents) {
   var buf = StringBuffer();
   for (var line in contents.split('\n')) {
-    buf.writeln(line.replaceAll('@material/', 'package:$packageName/src/scss/'));
+    buf.writeln(
+        line.replaceAll('@material/', 'package:$packageName/src/scss/'));
   }
   return buf.toString();
 }
-

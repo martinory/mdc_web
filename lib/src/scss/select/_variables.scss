@@ -20,48 +20,95 @@
 // THE SOFTWARE.
 //
 
-@import "package:mdc_web/src/scss/animation/variables";
-@import "package:mdc_web/src/scss/theme/variables";
+@use "sass:color";
+@use "package:mdc_web/src/scss/density/variables" as density-variables;
+@use "package:mdc_web/src/scss/notched-outline/variables" as notched-outline-variables;
+@use "package:mdc_web/src/scss/theme/variables";
 
-$mdc-select-arrow-padding: 52px !default;
-$mdc-select-label-padding: 16px !default;
-$mdc-select-height: 56px !default;
-$mdc-select-icon-padding: 48px !default;
+@function get-outlined-label-position-y($select-anchor-height) {
+  @return $select-anchor-height / 2 +
+    notched-outline-variables.$label-box-height / 2;
+}
+$ripple-target: '.mdc-select__ripple';
+$arrow-padding: 52px !default;
+$label-padding: 16px !default;
+$height: 56px !default;
+$minimum-height-for-filled-label: 52px !default;
+$filled-baseline-top: 40px !default;
+$selected-text-height: 28px !default;
+$anchor-padding-left: 16px !default;
+$anchor-padding-left-with-leading-icon: 0 !default;
+$anchor-padding-right: 0 !default;
+$outlined-stroke-width: 2px !default;
+$min-width: 200px !default;
+$shape-radius: small !default;
 
-$mdc-select-ink-color: rgba(mdc-theme-prop-value(on-surface), .87) !default;
-$mdc-select-dropdown-color: mdc-theme-prop-value(on-surface) !default;
-$mdc-select-icon-color: rgba(mdc-theme-prop-value(on-surface), .54) !default;
-$mdc-select-label-color: rgba(mdc-theme-prop-value(on-surface), .6) !default;
-$mdc-select-focused-label-color: rgba(mdc-theme-prop-value(primary), .87) !default;
-$mdc-select-bottom-line-idle-color: rgba(mdc-theme-prop-value(on-surface), .42) !default;
-$mdc-select-bottom-line-hover-color: rgba(mdc-theme-prop-value(on-surface), .87) !default;
-$mdc-select-helper-text-color: rgba(mdc-theme-prop-value(on-surface), .6) !default;
+$minimum-height: 40px !default;
+$minimum-height-for-filled-label: 52px !default;
+$maximum-height: $height !default;
+$density-scale: density-variables.$default-scale !default;
+$density-config: (
+  height: (
+    default: $height,
+    maximum: $maximum-height,
+    minimum: $minimum-height,
+  ),
+) !default;
 
-$mdc-select-fill-color: mix(mdc-theme-prop-value(on-surface), mdc-theme-prop-value(surface), 4%) !default;
+$ink-color: rgba(variables.prop-value(on-surface), 0.87) !default;
+$dropdown-icon-color: rgba(variables.prop-value(on-surface), 0.54) !default;
+$icon-color: rgba(variables.prop-value(on-surface), 0.54) !default;
+$label-color: rgba(variables.prop-value(on-surface), 0.6) !default;
+$focused-label-color: rgba(variables.prop-value(primary), 0.87) !default;
+$bottom-line-idle-color: rgba(variables.prop-value(on-surface), 0.42) !default;
+$bottom-line-hover-color: rgba(variables.prop-value(on-surface), 0.87) !default;
+$helper-text-color: rgba(variables.prop-value(on-surface), 0.6) !default;
 
-$mdc-select-dropdown-opacity: .54 !default;
+$fill-color: color.mix(
+  variables.prop-value(on-surface),
+  variables.prop-value(surface),
+  4%
+) !default;
 
 // Disabled Styles
-$mdc-select-disabled-label-color: rgba(mdc-theme-prop-value(on-surface), .37) !default;
-$mdc-select-disabled-icon-color: rgba(mdc-theme-prop-value(on-surface), .37) !default;
-$mdc-select-disabled-ink-color: rgba(mdc-theme-prop-value(on-surface), .37) !default;
-$mdc-select-disabled-fill-color: mix(mdc-theme-prop-value(on-surface), mdc-theme-prop-value(surface), 2%) !default;
-$mdc-select-disabled-dropdown-opacity: .37 !default;
+$disabled-label-color: rgba(variables.prop-value(on-surface), 0.38) !default;
+$disabled-icon-color: rgba(variables.prop-value(on-surface), 0.38) !default;
+$disabled-ink-color: rgba(variables.prop-value(on-surface), 0.38) !default;
+$disabled-fill-color: color.mix(
+  variables.prop-value(on-surface),
+  variables.prop-value(surface),
+  2%
+) !default;
+$disabled-fill-border: rgba(variables.prop-value(on-surface), 0.06) !default;
+$disabled-helper-text-color: rgba(
+  variables.prop-value(on-surface),
+  0.38
+) !default;
+$disabled-bottom-line-color: rgba(
+  variables.prop-value(on-surface),
+  0.06
+) !default;
+$disabled-dropdown-icon-color: rgba(
+  variables.prop-value(on-surface),
+  0.38
+) !default;
+$disabled-outline-color: rgba(variables.prop-value(on-surface), 0.06) !default;
 
-$mdc-select-outlined-idle-border: rgba(mdc-theme-prop-value(on-surface), .38) !default;
-$mdc-select-outlined-hover-border: rgba(mdc-theme-prop-value(on-surface), .87) !default;
+$outlined-idle-border: rgba(variables.prop-value(on-surface), 0.38) !default;
+$outlined-hover-border: rgba(variables.prop-value(on-surface), 0.87) !default;
 
-// should be .06 after mdc-select opacity is applied
-$mdc-select-outlined-disabled-border: rgba(mdc-theme-prop-value(on-surface), .16) !default;
+$label-position-y: 106% !default;
+$outline-label-offset: 16px !default;
+$outlined-label-position-y: get-outlined-label-position-y($height) !default;
+$outlined-with-leading-icon-label-position-x: 32px !default;
 
-$mdc-select-label-position-y: 70% !default;
-$mdc-select-outline-label-offset: 16px !default;
-$mdc-select-outlined-label-position-y: 130% !default;
-$mdc-select-outlined-dense-label-position-y: 110% !default;
-$mdc-select-outlined-with-leading-icon-label-position-x: 32px !default;
-
-$mdc-select-dropdown-transition-duration: 150ms !default;
+$dropdown-transition-duration: 150ms !default;
+// Transition durartions to active state
+$icon-active-fade-out-duration: 0.33 * $dropdown-transition-duration !default;
+$icon-active-fade-in-duration: 0.67 * $dropdown-transition-duration !default;
+// Transition durartions to inactive state
+$icon-inactive-fade-out-duration: 0.5 * $dropdown-transition-duration !default;
+$icon-inactive-fade-in-duration: 0.5 * $dropdown-transition-duration !default;
 
 // Error colors
-$mdc-select-error-color: error !default;
-
+$error-color: error !default;

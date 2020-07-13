@@ -22,13 +22,13 @@
 
 // MDC Ripple keyframes are split into their own file so that _mixins.scss can rely on them.
 
-@import "package:mdc_web/src/scss/animation/variables";
-@import "./variables";
+@use "package:mdc_web/src/scss/animation/variables";
+@use "./variables" as variables2;
 
-@mixin mdc-ripple-keyframes_ {
+@mixin keyframes_ {
   @keyframes mdc-ripple-fg-radius-in {
     from {
-      animation-timing-function: $mdc-animation-standard-curve-timing-function;
+      animation-timing-function: variables.$standard-curve-timing-function;
       // NOTE: For these keyframes, we do not need custom property fallbacks because they are only
       // used in conjunction with `.mdc-ripple-upgraded`. Since MDCRippleFoundation checks to ensure
       // that custom properties are supported within the browser before adding this class, we can
@@ -37,7 +37,8 @@
     }
 
     to {
-      transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));
+      transform: translate(var(--mdc-ripple-fg-translate-end, 0))
+        scale(var(--mdc-ripple-fg-scale, 1));
     }
   }
 
@@ -63,4 +64,3 @@
     }
   }
 }
-

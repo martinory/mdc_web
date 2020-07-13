@@ -1,6 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-@import url(https://fonts.googleapis.com/css?family=Material+Icons);
-@import "package:mdc_web/material-components-web";
+@use url(https://fonts.googleapis.com/css?family=Roboto);
+@use url(https://fonts.googleapis.com/css?family=Material+Icons);
+@use "package:mdc_web/material-components-web";
 #content>section {
   margin: 8px 0;
   padding: 8px;

@@ -20,7 +20,7 @@
 // THE SOFTWARE.
 //
 
-@mixin mdc-slider-emphasize-keyframes_ {
+@mixin emphasize-keyframes_ {
   @keyframes mdc-slider-emphasize {
     0% {
       animation-timing-function: ease-out;
@@ -28,12 +28,11 @@
 
     50% {
       animation-timing-function: ease-in;
-      transform: scale(.85);
+      transform: scale(0.85);
     }
 
     100% {
-      transform: scale(.571);
+      transform: scale(0.571);
     }
   }
 }
-

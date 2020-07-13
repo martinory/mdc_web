@@ -8,7 +8,7 @@ $mdc-layout-grid-default-margin: (
 );
 $mdc-layout-grid-default-gutter: $mdc-layout-grid-default-margin;
 
-@import "package:mdc_web/material-components-web";
+@use "package:mdc_web/material-components-web";
 
 html,
 body {

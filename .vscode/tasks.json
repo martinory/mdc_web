@@ -1,0 +1,44 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "git add .",
+            "type": "shell",
+            "command": "git add .",
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "git commit -am 'commit'",
+            "type": "shell",
+            "command": "git commit -am 'commit'",
+            "isBackground": true,
+            "problemMatcher": [],
+            "dependsOn": [
+                "git add ."
+            ]
+        },
+        {
+            "label": "git: push",
+            "type": "shell",
+            "command": "git push origin master",
+            "isBackground": true,
+            "problemMatcher": [],
+            "dependsOn": [
+                "git commit -am 'commit'"
+            ]
+        },
+        {
+            "label": "git: add, commit & push!",
+            "type": "shell",
+            "command": "[System.Media.SystemSounds]::Beep.Play()",
+            "isBackground": true,
+            "dependsOn": [
+                "git: push"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

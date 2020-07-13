@@ -20,9 +20,9 @@
 // THE SOFTWARE.
 //
 
-@import "../functions";
-@import "package:mdc_web/src/scss/theme/mixins";
-@import "package:mdc_web/src/scss/typography/mixins";
+@use "../functions";
+@use "package:mdc_web/src/scss/theme/mixins";
+@use "package:mdc_web/src/scss/typography/mixins";
 
 // postcss-bem-linter: define text-field-helper-text
 
